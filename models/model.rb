@@ -4,9 +4,10 @@ require 'rubygems'
 
 def format_request_and_call_api(search_term)
   #substitute the spaces for + signs, since that's how web search terms are formatted
-	new_search_term = search_term.gsub(" ", "+") 
+ new_search_term=search_term.gsub(" ", "+")
 	#make the call to the API using your API key! THIS WILL CHANGE BASED ON YOUR API. Look for the API endpoint. Substitute a variable for the search term, and put in your personal API key. 
-	request_string = "http://api.giphy.com/v1/gifs/search?q=#{new_search_term}&api_key=dc6zaTOxFJmzC"
+	request_string = "http://api.giphy.com/v1/gifs/search?q=#{new_search_term}&api_key=dc6zaTOxFJmzC"   
+
 	
 	#input: request string. Output is Ruby hash with tons of data. 
 	sample_uri = URI(request_string) #opens a portal to the data at that link
@@ -22,6 +23,5 @@ def format_request_and_call_api(search_term)
 	one_gif=data.sample
 	
 	url=one_gif["images"]["fixed_height"]["url"]
-	title=one_gif["id"]
-	[url,title]
+
 end
